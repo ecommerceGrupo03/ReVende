@@ -1,5 +1,5 @@
 package com.reVende.projeto.model;
 
-public class Usuarios {
+public class Usuario {
 
 }
