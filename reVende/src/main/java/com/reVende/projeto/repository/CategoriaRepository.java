@@ -10,5 +10,7 @@ import com.reVende.projeto.model.Categoria;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 	public List<Categoria> findAllByDescricaoContainingIgnoreCase(@Param("descricao") String descricao);
+	
+	public List <Categoria> findAllByNomeContainingIgnoreCase(@Param("nome") String nome);
 
 }
