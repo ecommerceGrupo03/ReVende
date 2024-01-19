@@ -1,6 +1,5 @@
 package com.reVende.projeto.controller;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -58,10 +57,15 @@ public class ProdutoController {
 	}
 
 	@GetMapping("/preco/max/{preco}")
-	public ResponseEntity<List<Produto>> getByPreco(@PathVariable BigDecimal preco) {
+	public ResponseEntity<List<Produto>> getByPrecoMenorOuIgual(@PathVariable Double preco) {
 		return ResponseEntity.ok(produtoRepository.findByPrecoLessThanEqual(preco));
 	}
 
+	@GetMapping("/preco/entre/{precoMin}/{precoMax}")
+	public ResponseEntity<List<Produto>> getByPrecoEntre(@PathVariable Double precoMin, @PathVariable Double precoMax) {
+		return ResponseEntity.ok(produtoRepository.findByPrecoBetween(precoMin, precoMax));
+	}
+	
 	@PostMapping
 	public ResponseEntity<Produto> post(@Valid @RequestBody Produto produto) {
 		if (categoriaRepository.existsById(produto.getCategoria().getId()))

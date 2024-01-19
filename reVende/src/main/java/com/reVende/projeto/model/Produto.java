@@ -1,11 +1,13 @@
 package com.reVende.projeto.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +16,6 @@ import jakarta.validation.constraints.Size;
 
 @Entity
 @Table (name = "tb_produtos")
-
 public class Produto {
 	
 	@Id
@@ -40,6 +41,30 @@ public class Produto {
 	
 	@Size(max =255, message = "O atributo foto deve conter no maximo 255 caracteres")
 	private String foto;
+
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Categoria categoria;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private Usuario usuario;
+	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	public Long getId() {
 		return id;
