@@ -39,7 +39,7 @@ public class Produto {
     @Min(0)
     private Double preco;
 	
-	@Size(max =255, message = "O atributo foto deve conter no maximo 255 caracteres")
+	@Size(max = 1000, message = "O atributo foto deve conter no maximo 1000 caracteres")
 	private String foto;
 
 	@ManyToOne

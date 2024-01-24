@@ -35,7 +35,7 @@ public class Usuario {
 	@Size(max = 255, message = "Atributo senha recebe no máximo 255 caracteres")
 	private String senha;
 	
-	@Size(max =255, message = "O atributo foto deve conter no maximo 255 caracteres")
+	@Size(max = 1000, message = "O atributo foto deve conter no maximo 1000 caracteres")
 	private String foto;
 	
 	@Size(max = 14, message = "Atributo cpf recebe no máximo 14 caracteres")
