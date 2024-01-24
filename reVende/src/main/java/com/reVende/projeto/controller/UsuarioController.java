@@ -44,6 +44,7 @@ public class UsuarioController {
 	   .map(resposta-> ResponseEntity.ok(resposta))
 	   .orElse(ResponseEntity.notFound().build());	        
 	}
+	
 	@PostMapping("/logar")
 	public ResponseEntity<UsuarioLogin> autenticarUsuario(@RequestBody Optional<UsuarioLogin> usuarioLogin){
 		

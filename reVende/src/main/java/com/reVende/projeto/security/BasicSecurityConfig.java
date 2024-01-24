@@ -68,6 +68,8 @@ public class BasicSecurityConfig {
 	                .requestMatchers("/produtos/nome/*").permitAll()
 	                .requestMatchers("/produtos/descricao/*").permitAll()
 	                .requestMatchers("/produtos/preco/*").permitAll()
+	                .requestMatchers("/produtos/preco/max/*").permitAll()
+	                .requestMatchers("/produtos/preco/entre/*/*").permitAll()
 	                
 	                .requestMatchers("/categorias/listar").permitAll()
 	                .requestMatchers("/categorias/nome/*").permitAll()
