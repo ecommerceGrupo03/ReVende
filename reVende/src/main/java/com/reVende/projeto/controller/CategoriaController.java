@@ -31,7 +31,7 @@ public class CategoriaController {
 	@Autowired
 	private CategoriaRepository categoriaRepository;
 
-	@GetMapping
+	@GetMapping("/listar")
 	public ResponseEntity<List<Categoria>> getAll() {
 		return ResponseEntity.ok(categoriaRepository.findAll());
 	}
