@@ -21,21 +21,21 @@ public class UsuarioService {
 
 	@Autowired
 	private UsuarioRepository usuarioRepository;
-	
+
 	@Autowired
 	private JwtService jwtService;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
-	
+
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario){
 		if (usuarioRepository.findByEmail(usuario.getEmail()).isPresent())
 			return Optional.empty();
-		
+
 		usuario.setSenha(criptografarSenha(usuario.getSenha()));
 		return Optional.of(usuarioRepository.save(usuario));
 	}
-	
+
 	public Optional<Usuario> atualizarUsuario(Usuario usuario){
 		if (usuarioRepository.findById(usuario.getId()).isPresent()){
 			Optional<Usuario> buscaUsuario = usuarioRepository.findByEmail(usuario.getEmail());
@@ -46,36 +46,35 @@ public class UsuarioService {
 			return Optional.ofNullable(usuarioRepository.save(usuario));	
 		}
 		return Optional.empty();
-		
-	}
-    public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin){
-    	var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha());
-    	Authentication authentication = authenticationManager.authenticate(credenciais);
-    	if (authentication.isAuthenticated()) {
-    		Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
-    	   	if(usuario.isPresent()) {
-    	   		usuarioLogin.get().setId(usuario.get().getId());
-                usuarioLogin.get().setNome(usuario.get().getNome());
-                usuarioLogin.get().setFoto(usuario.get().getFoto());
-                usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getEmail()));
-                usuarioLogin.get().setSenha("");
-                usuarioLogin.get().setCpf(usuario.get().getCpf());
-                usuarioLogin.get().setCnpj(usuario.get().getCnpj());
-                return usuarioLogin;
-    	   	}
-    	}
-    	return Optional.empty();
-    }
-	private String criptografarSenha(String senha) {
-		
 
+	}
+	public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin){
+		var credenciais = new UsernamePasswordAuthenticationToken(usuarioLogin.get().getEmail(), usuarioLogin.get().getSenha());
+		Authentication authentication = authenticationManager.authenticate(credenciais);
+		if (authentication.isAuthenticated()) {
+			Optional<Usuario> usuario = usuarioRepository.findByEmail(usuarioLogin.get().getEmail());
+			if(usuario.isPresent()) {
+				usuarioLogin.get().setId(usuario.get().getId());
+				usuarioLogin.get().setNome(usuario.get().getNome());
+				usuarioLogin.get().setFoto(usuario.get().getFoto());
+				usuarioLogin.get().setToken(gerarToken(usuarioLogin.get().getEmail()));
+				usuarioLogin.get().setSenha("");
+				usuarioLogin.get().setCpf(usuario.get().getCpf());
+				usuarioLogin.get().setCnpj(usuario.get().getCnpj());
+				return usuarioLogin;
+			}
+		}
+		return Optional.empty();
+	}
+
+	private String criptografarSenha(String senha) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		return encoder.encode(senha);
-		
+
 	}
-	
+
 	private String gerarToken (String email) {
 		return "Bearer " + jwtService.generateToken(email);
 	}
-	
+
 }
