@@ -15,41 +15,56 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
-@Table (name = "tb_produtos")
+@Table(name = "tb_produtos")
 public class Produto {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@NotBlank(message= "O atributo nome é obrigatório")
-	@Size(min=2, max =255, message = "O atributo nome deve conter no minimo 10 e no maximo 255 caracteres")
+
+	@NotBlank(message = "O atributo nome é obrigatório")
+	@Size(min = 2, max = 255, message = "O atributo nome deve conter no minimo 10 e no maximo 255 caracteres")
 	private String nome;
-	
-	@NotBlank(message= "O atributo descrição é obrigatório")
-	@Size(min=10, max =255, message = "O atributo descrição deve conter no minimo 10 e no maximo 255 caracteres")
+
+	@NotBlank(message = "O atributo descrição é obrigatório")
+	@Size(min = 10, max = 255, message = "O atributo descrição deve conter no minimo 10 e no maximo 255 caracteres")
 	private String descricao;
-	
+
 	@NotNull
 	@Min(0)
 	private Long quantidade;
-	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
-    @NotNull(message = "Preço é obrigatório!")
-    @Min(0)
-    private Double preco;
-	
+	@NotNull(message = "Preço é obrigatório!")
+	@Min(0)
+	private Double preco;
+
 	@Size(max = 1000, message = "O atributo foto deve conter no maximo 1000 caracteres")
 	private String foto;
 
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
 	private Categoria categoria;
-	
+
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
 	private Usuario usuario;
-	
+
+	public Produto() {
+	}
+
+	public Produto(Long id, String nome, String descricao, Long quantidade, Double preco, String foto, Categoria categoria,
+			Usuario usuario) {
+		this.id = id;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.quantidade = quantidade;
+		this.preco = preco;
+		this.foto = foto;
+		this.categoria = categoria;
+		this.usuario = usuario;
+	}
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -113,7 +128,5 @@ public class Produto {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
-	
 
 }

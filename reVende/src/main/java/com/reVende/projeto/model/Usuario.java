@@ -22,25 +22,25 @@ public class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank(message = "O atributo nome é de preenchimento obrigatório!")
 	@Size(max = 255, message = "Atributo nome recebe no máximo 255 caracteres")
 	private String nome;
-	
+
 	@NotBlank(message = "O atributo email é de preenchimento obrigatório!")
 	@Size(max = 255, message = "Atributo email recebe no máximo 255 caracteres")
 	private String email;
-	
+
 	@NotBlank(message = "O atributo senha é de preenchimento obrigatório!")
 	@Size(max = 255, message = "Atributo senha recebe no máximo 255 caracteres")
 	private String senha;
-	
+
 	@Size(max = 1000, message = "O atributo foto deve conter no maximo 1000 caracteres")
 	private String foto;
-	
+
 	@Size(max = 14, message = "Atributo cpf recebe no máximo 14 caracteres")
 	private String cpf;
-	
+
 	@Size(max = 18, message = "Atributo cnpj recebe no máximo 18 caracteres")
 	private String cnpj;
 
@@ -48,6 +48,19 @@ public class Usuario {
 	@JsonIgnoreProperties("usuario")
 	private List<Produto> produtos;
 	
+	public Usuario() {}
+
+	public Usuario(Long id, String nome, String email, String senha, String foto, String cpf, String cnpj) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.senha = senha;
+		this.foto = foto;
+		this.cpf = cpf;
+		this.cnpj = cnpj;
+	}
+	
+
 	public List<Produto> getProdutos() {
 		return produtos;
 	}
@@ -111,5 +124,5 @@ public class Usuario {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	
+
 }
