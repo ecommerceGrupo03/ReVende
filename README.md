@@ -1,6 +1,7 @@
 # Projeto ReVende
+
 <p align="center">
-  <img src="./reVende/src/assets/logoRevende.svg" width="60%" />
+  <img src="./reVende/src/assets/logoRevende.svg" width="50%" />
 </p>
 
 ## Visão Geral
