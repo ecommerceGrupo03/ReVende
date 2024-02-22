@@ -5,11 +5,9 @@
 </p>
 
 ## Visão Geral
-Este projeto é um E-commerce de produtos recicláveis, baseado no Objetivo de Desenvolvimento Sustentável (ODS) da ONU número 12 - Consumo e Produção Sustentáveis. <br></br>
-Nosso objetivo é criar uma plataforma que facilite a conexão entre pessoas que desejam descartar ou vender materiais recicláveis e pessoas interessadas em comprá-los.
-<p>
-  <img src="https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-12.svg" width="200" />
-</p>
+Este projeto é um E-commerce de produtos usados ou sem uso, baseado no Objetivo de Desenvolvimento Sustentável (ODS) da ONU número 12 - Consumo e Produção Sustentáveis. <br></br>
+Nosso objetivo é criar uma plataforma que facilite a conexão entre pessoas que desejam descartar ou vender materiais usados ou sem uso e pessoas interessadas em comprá-los.
+
 
 ## Funcionalidades
 
@@ -40,7 +38,6 @@ Nosso objetivo é criar uma plataforma que facilite a conexão entre pessoas que
 - Marília Tostes: [LinkedIn](https://www.linkedin.com/in/marilia-ribeiro-tostes/)
 - Rafael Carmo: [LinkedIn](https://www.linkedin.com/)
 
-<br></br>
 ***
 
 # Sistema de Controle de Acesso e Segurança
@@ -121,3 +118,7 @@ mvn test
 ```
 ## Contribuição
 Contribuições são bem-vindas! Se você tiver sugestões de melhorias, correções de bugs ou novas funcionalidades, sinta-se à vontade para abrir uma issue ou enviar um pull request.
+<br></br>
+<p>
+  <img src="https://brasil.un.org/profiles/undg_country/themes/custom/undg/images/SDGs/pt-br/SDG-12.svg" width="200" />
+</p>
