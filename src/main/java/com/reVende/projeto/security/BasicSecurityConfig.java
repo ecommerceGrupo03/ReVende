@@ -64,14 +64,14 @@ public class BasicSecurityConfig {
 	                .requestMatchers("/usuarios/logar").permitAll()
 	                .requestMatchers("/usuarios/cadastrar").permitAll()
 	                
-	                .requestMatchers("/produtos/listar").permitAll()
+	                .requestMatchers(HttpMethod.GET, "/produtos/listar").permitAll()
 	                .requestMatchers("/produtos/nome/*").permitAll()
 	                .requestMatchers("/produtos/descricao/*").permitAll()
 	                .requestMatchers("/produtos/preco/*").permitAll()
 	                .requestMatchers("/produtos/preco/max/*").permitAll()
 	                .requestMatchers("/produtos/preco/entre/*/*").permitAll()
 	                
-	                .requestMatchers("/categorias/listar").permitAll()
+	                .requestMatchers(HttpMethod.GET, "/categorias/listar").permitAll()
 	                .requestMatchers("/categorias/nome/*").permitAll()
 	                .requestMatchers("/categorias/descricao/*").permitAll()
 	                
